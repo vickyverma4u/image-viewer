@@ -1,0 +1,10 @@
+.container {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 36px;
+  justify-content: center;
+}
+.media {
+  height: 0;
+  padding-top: 60%;
+}

@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 // Styling:
 const useStyles = makeStyles({
@@ -24,21 +25,31 @@ const useStyles = makeStyles({
     paddingBottom: 0,
   },
   cardContent: {
-    paddingTop: 0,
     paddingLeft: 50,
     paddingRight: 50,
   },
   btn: {
-    marginTop: 40,
     "&:hover": {
       cursor: "pointer",
     },
+  },
+  errorFalse: {
+    fontSize: "0.75rem",
+    color: "white",
+  },
+  errorTrue: {
+    fontSize: "0.75rem",
+    color: "red",
   },
 });
 
 // React functional component:
 const Login = (props) => {
   const classes = useStyles();
+  const username = "vicky";
+  const password = "password";
+  const accessToken =
+    "IGQVJWN0o0RTl0LURaMEFtYjROWWJoMmRQOUhLeS05VnBrU0E5VEY4MkRCUDhwOEtSc0tyMGlBNjVGOUw1U0FiMUw2RWkyNnRmYmlSOFN6MnBMTWc2Xy15eS1WSUYxZA082cGdjVlVlSmdBQmc1R2UwMjBYQzRtd0R0MUFN";
 
   // State declaration:
   const [account, setState] = useState({
@@ -46,6 +57,7 @@ const Login = (props) => {
     passInput: "",
     userError: false,
     passError: false,
+    loginError: false,
   });
 
   const handleChange = (e) => {
@@ -56,19 +68,25 @@ const Login = (props) => {
 
   const handleLogin = () => {
     const tempAcc = { ...account };
-    if (account.userInput == "") {
+    if (account.userInput === "") {
       tempAcc.userError = true;
-      setState(tempAcc);
     } else {
       tempAcc.userError = false;
-      setState(tempAcc);
     }
 
-    if (account.passInput == "") {
+    if (account.passInput === "") {
       tempAcc.passError = true;
-      setState(tempAcc);
     } else {
       tempAcc.passError = false;
+    }
+
+    if (account.userInput === username && account.passInput === password) {
+      tempAcc.loginError = false;
+      setState(tempAcc);
+      window.sessionStorage.setItem("accessToken", accessToken);
+      props.history.push("/home");
+    } else {
+      tempAcc.loginError = true;
       setState(tempAcc);
     }
   };
@@ -77,12 +95,7 @@ const Login = (props) => {
     <Card className={classes.root} raised>
       <CardHeader className={classes.cardHeader} title="LOGIN" />
       <CardContent className={classes.cardContent}>
-        <FormControl
-          margin="normal"
-          fullWidth
-          error={account.userError}
-          required
-        >
+        <FormControl margin="normal" fullWidth>
           <InputLabel htmlFor="username">Username</InputLabel>
           <Input
             id="username"
@@ -91,22 +104,40 @@ const Login = (props) => {
             value={account.userInput}
             onChange={handleChange}
           ></Input>
+          <FormHelperText
+            id="userErrorText"
+            className={
+              account.userError ? classes.errorTrue : classes.errorFalse
+            }
+          >
+            required
+          </FormHelperText>
         </FormControl>
-        <FormControl
-          margin="normal"
-          fullWidth
-          error={account.passError}
-          required
-        >
+        <FormControl margin="normal" fullWidth required>
           <InputLabel htmlFor="password">Password</InputLabel>
           <Input
             id="password"
             name="passInput"
-            type="text"
+            type="password"
             value={account.passInput}
             onChange={handleChange}
           ></Input>
+          <FormHelperText
+            id="userErrorText"
+            className={
+              account.passError ? classes.errorTrue : classes.errorFalse
+            }
+          >
+            required
+          </FormHelperText>
         </FormControl>
+        <p
+          className={
+            account.loginError ? classes.errorTrue : classes.errorFalse
+          }
+        >
+          Incorrect username and/or password
+        </p>
         <Button
           className={classes.btn}
           variant="contained"
