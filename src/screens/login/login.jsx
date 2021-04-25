@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,6 +8,7 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import NavBar from "../../common/navBar";
 
 // Styling:
 const useStyles = makeStyles({
@@ -49,7 +50,7 @@ const Login = (props) => {
   const username = "vicky";
   const password = "password";
   const accessToken =
-    "IGQVJWN0o0RTl0LURaMEFtYjROWWJoMmRQOUhLeS05VnBrU0E5VEY4MkRCUDhwOEtSc0tyMGlBNjVGOUw1U0FiMUw2RWkyNnRmYmlSOFN6MnBMTWc2Xy15eS1WSUYxZA082cGdjVlVlSmdBQmc1R2UwMjBYQzRtd0R0MUFN";
+    "IGQVJVYnBrUEtLRERtenIyZAXRCZA051a08yNEVuRVdveFpBVzRIZAElmZAnJreWtIcmZAqMGhrMk9fX0RSVi0xemIyNm9wOXEyNjZAhVjlGNjVwcHVVWm5mTmQxdFl6Qy1fcU9aUTNNS1ZAQQmlQY3A1WG5XUGdVaVp3Q18yalpB";
 
   // State declaration:
   const [account, setState] = useState({
@@ -92,62 +93,65 @@ const Login = (props) => {
   };
 
   return (
-    <Card className={classes.root} raised>
-      <CardHeader className={classes.cardHeader} title="LOGIN" />
-      <CardContent className={classes.cardContent}>
-        <FormControl margin="normal" fullWidth>
-          <InputLabel htmlFor="username">Username</InputLabel>
-          <Input
-            id="username"
-            name="userInput"
-            type="text"
-            value={account.userInput}
-            onChange={handleChange}
-          ></Input>
-          <FormHelperText
-            id="userErrorText"
+    <Fragment>
+      <NavBar />
+      <Card className={classes.root} raised>
+        <CardHeader className={classes.cardHeader} title="LOGIN" />
+        <CardContent className={classes.cardContent}>
+          <FormControl margin="normal" fullWidth>
+            <InputLabel htmlFor="username">Username</InputLabel>
+            <Input
+              id="username"
+              name="userInput"
+              type="text"
+              value={account.userInput}
+              onChange={handleChange}
+            ></Input>
+            <FormHelperText
+              id="userErrorText"
+              className={
+                account.userError ? classes.errorTrue : classes.errorFalse
+              }
+            >
+              required
+            </FormHelperText>
+          </FormControl>
+          <FormControl margin="normal" fullWidth required>
+            <InputLabel htmlFor="password">Password</InputLabel>
+            <Input
+              id="password"
+              name="passInput"
+              type="password"
+              value={account.passInput}
+              onChange={handleChange}
+            ></Input>
+            <FormHelperText
+              id="userErrorText"
+              className={
+                account.passError ? classes.errorTrue : classes.errorFalse
+              }
+            >
+              required
+            </FormHelperText>
+          </FormControl>
+          <p
             className={
-              account.userError ? classes.errorTrue : classes.errorFalse
+              account.loginError ? classes.errorTrue : classes.errorFalse
             }
           >
-            required
-          </FormHelperText>
-        </FormControl>
-        <FormControl margin="normal" fullWidth required>
-          <InputLabel htmlFor="password">Password</InputLabel>
-          <Input
-            id="password"
-            name="passInput"
-            type="password"
-            value={account.passInput}
-            onChange={handleChange}
-          ></Input>
-          <FormHelperText
-            id="userErrorText"
-            className={
-              account.passError ? classes.errorTrue : classes.errorFalse
-            }
+            Incorrect username and/or password
+          </p>
+          <Button
+            className={classes.btn}
+            variant="contained"
+            color="primary"
+            onClick={handleLogin}
           >
-            required
-          </FormHelperText>
-        </FormControl>
-        <p
-          className={
-            account.loginError ? classes.errorTrue : classes.errorFalse
-          }
-        >
-          Incorrect username and/or password
-        </p>
-        <Button
-          className={classes.btn}
-          variant="contained"
-          color="primary"
-          onClick={handleLogin}
-        >
-          LOGIN
-        </Button>
-      </CardContent>
-    </Card>
+            LOGIN
+          </Button>
+        </CardContent>
+      </Card>
+    </Fragment>
   );
 };
 
