@@ -6,7 +6,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "../assets/boy-cartoon-avatar.png";
-import { makeStyles } from "@material-ui/core";
+import { IconButton, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   appBar: {
@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     paddingBottom: 0,
     backgroundColor: "#bbb",
     borderRadius: 5,
+    margin: "auto",
   },
   avatar: {
     marginLeft: 20,
@@ -32,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const NavBar = ({ searchBar, onSearch }) => {
+const NavBar = ({ searchBar, onSearch, toggleFloat }) => {
   const classes = useStyles();
 
   return (
@@ -56,7 +57,9 @@ const NavBar = ({ searchBar, onSearch }) => {
                 ),
               }}
             ></TextField>
-            <Avatar src={logo} className={classes.avatar} />
+            <IconButton className={classes.avatar} onClick={toggleFloat}>
+              <Avatar src={logo} />
+            </IconButton>
           </div>
         ) : null}
       </Toolbar>

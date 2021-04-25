@@ -1,10 +1,45 @@
 .container {
-  padding-left: 24px;
-  padding-right: 24px;
   padding-top: 36px;
   justify-content: center;
 }
 .media {
   height: 0;
   padding-top: 60%;
+}
+
+.gridItem {
+  margin-bottom: 24px;
+}
+
+.add-comment {
+  display: flex;
+  margin: 0;
+  padding: 0px 20px 20px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment {
+  padding: 0px 20px;
+}
+
+.float-on {
+  z-index: 10;
+  position: absolute;
+  display: flex;
+  top: 60px;
+  right: 60px;
+  max-width: 100px;
+  background-color: lightgray;
+  padding: 0px 10px;
+  border: "#ccc";
+  border-radius: 5px;
+}
+
+.float-on p:hover {
+  cursor: pointer;
+}
+
+.float-off {
+  display: none;
 }
