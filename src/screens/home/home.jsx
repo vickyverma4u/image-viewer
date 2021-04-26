@@ -140,6 +140,7 @@ class Home extends Component {
       <Fragment>
         <NavBar
           searchBar
+          avatarIcon
           onSearch={this.handleSearch}
           toggleFloat={this.toggleFloat}
         />

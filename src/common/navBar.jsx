@@ -33,15 +33,15 @@ const useStyles = makeStyles({
   },
 });
 
-const NavBar = ({ searchBar, onSearch, toggleFloat }) => {
+const NavBar = ({ searchBar, avatarIcon, onSearch, toggleFloat }) => {
   const classes = useStyles();
 
   return (
     <AppBar position="static">
       <Toolbar className={classes.appBar}>
         <p className={classes.logo}>Image Viewer</p>
-        {searchBar ? (
-          <div className={classes.appBarRight}>
+        <div className={classes.appBarRight}>
+          {searchBar ? (
             <TextField
               id="search-box"
               className={classes.searchBar}
@@ -57,11 +57,13 @@ const NavBar = ({ searchBar, onSearch, toggleFloat }) => {
                 ),
               }}
             ></TextField>
+          ) : null}
+          {avatarIcon ? (
             <IconButton className={classes.avatar} onClick={toggleFloat}>
               <Avatar src={logo} />
             </IconButton>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </Toolbar>
     </AppBar>
   );

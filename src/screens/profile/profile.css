@@ -1,0 +1,81 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 600px;
+  margin: auto;
+  align-items: center;
+}
+.sub-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.sub-main * {
+  padding: 5;
+  margin: 0;
+}
+
+.sub2-main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-main p {
+  margin: 5px;
+}
+
+.sub-main h3 {
+  margin: 5px;
+}
+
+.main-avatar {
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+}
+
+.container {
+  padding-top: 0px;
+  justify-content: center;
+}
+.media {
+  height: 0;
+  padding-top: 90%;
+}
+
+.float-on {
+  z-index: 10;
+  position: absolute;
+  display: flex;
+  top: 10px;
+  left: 10px;
+  width: 150px;
+  background-color: white;
+  padding: 0px 10px;
+  border: solid 1px darkgray;
+  border-radius: 5px;
+}
+
+.float-on p:hover {
+  cursor: pointer;
+}
+
+.float-off {
+  display: none;
+}
+
+.floatContainer {
+  position: relative;
+  width: 0;
+  height: 0;
+  margin: auto;
+}
+
+/* .gridItem {
+  margin-bottom: 24px;
+} */
