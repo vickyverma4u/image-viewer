@@ -15,7 +15,7 @@ class Profile extends Component {
   state = {
     mediaList: [],
     username: "vickyverma4u10",
-    floatingClass: "float-off",
+    floatingClass: "floatEdit-off",
   };
 
   getData = async (accessToken) => {
@@ -45,16 +45,16 @@ class Profile extends Component {
   }
 
   openFloat = () => {
-    if (this.state.floatingClass === "float-off") {
-      this.setState({ floatingClass: "float-on" });
+    if (this.state.floatingClass === "floatEdit-off") {
+      this.setState({ floatingClass: "floatEdit-on" });
     } else {
-      this.setState({ floatingClass: "float-off" });
+      this.setState({ floatingClass: "floatEdit-off" });
     }
   };
 
   handleUsernameUpdate = (username) => {
     this.setState({ username });
-    this.setState({ floatingClass: "float-off" });
+    this.setState({ floatingClass: "floatEdit-off" });
   };
 
   render() {

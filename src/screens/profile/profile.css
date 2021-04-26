@@ -48,24 +48,24 @@
   padding-top: 90%;
 }
 
-.float-on {
+.floatEdit-on {
   z-index: 10;
   position: absolute;
   display: flex;
   top: 10px;
   left: 10px;
-  width: 150px;
+  width: 100px;
   background-color: white;
   padding: 0px 10px;
   border: solid 1px darkgray;
   border-radius: 5px;
 }
 
-.float-on p:hover {
+.floatEdit-on p:hover {
   cursor: pointer;
 }
 
-.float-off {
+.floatEdit-off {
   display: none;
 }
 
