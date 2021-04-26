@@ -53,7 +53,6 @@ class Profile extends Component {
   };
 
   handleUsernameUpdate = (username) => {
-    console.log(username);
     this.setState({ username });
     this.setState({ floatingClass: "float-off" });
   };
